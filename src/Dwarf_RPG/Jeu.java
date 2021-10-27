@@ -176,11 +176,7 @@ public class Jeu {
 					personnage.or = personnage.or - choixMateriau;
 					break;
 				case (4):
-					if(personnage.numClasse != 1) {
-						System.out.println("Tu n'es pas Guerrier, qu'est-ce que tu veux bien faire d'une armure !");
-						annonceEquipement();
-					}
-					else if(personnage.ajoutInventaire(new Armure(choixMateriau)) == false) {
+					if(personnage.ajoutInventaire(new Armure(choixMateriau)) == false) {
 						System.out.println("Il y n'a plus de place dans ton inventaire.");
 						annonceEquipement();
 					}
