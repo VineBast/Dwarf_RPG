@@ -7,6 +7,7 @@
 * Vous avez le choix entre 4 classes : Guerrier, Guérisseur, Maître des Runes, Mineur ou une classe cachée.
 * Le bestiaire se compose de : Gobelins (faible créature), Wargs (moyenne créature), de Trolls (forte créature) et d'un Boss qui est très puissant.
 * Vous commencez en bas à gauche sur une carte carrée. Le but du jeu est de vaincre le boss en haut à droite et de sortir du Donjon.
+* Pour faire varier la taille du Donjon, allez dans `Jeu.java`, et inscriver la taille souhaitée dans `new Jeu(4)`. Le chiffre correspond à la largeur du donjon.
 
 **Fonctionnement IG :**
 * La majorité des choix ont pour réponse Oui ou Non, avec 0 pour Oui et 1 pour Non.
