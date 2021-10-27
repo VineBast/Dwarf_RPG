@@ -12,6 +12,12 @@ public class Curseur extends Destructible {
 	public String type() {
 		return "Curseur";
 	}
+
+	@Override
+	double contenu() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }
 
 

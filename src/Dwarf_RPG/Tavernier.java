@@ -11,4 +11,9 @@ public class Tavernier extends Destructible {
 	public String type() {
 		return "Tavernier";
 	}
+	@Override
+	double contenu() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

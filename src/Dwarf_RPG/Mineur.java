@@ -6,8 +6,10 @@ public class Mineur extends Personnage {
 	}
 	
 	public void aptitudeDeClasse() {
-		/*A COMPLETER POUR AVANCER D'UNE CASE */
-		System.out.println("Tu sors ton marteau de mineur et creuse un tunnel à toute vitesse.");
-		System.out.println("Tu as echappé au pire");
+		System.out.println("Tu sors ta pioche de mineur et creuse le sol. \n"
+				+ "Incroyable, il y avait un filon d'or sous tes pieds !");
+		int random = ((int) (Math.random()* 100));
+		super.or+= random;
+		System.out.println("Tu as découvert l'équivalent de "+random+" pièces d'or. Tes bourses sont maintenant remplies de "+super.or+" pièces d'or.");
 	}
 }

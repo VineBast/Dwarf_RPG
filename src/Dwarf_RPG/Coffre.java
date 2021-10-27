@@ -12,6 +12,8 @@ public class Coffre  extends Destructible {
 	public String type() {
 		return "Coffre";
 	}
-	
+	public double contenu() {
+		return super.pv;
+	}
 
 }

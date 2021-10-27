@@ -6,17 +6,19 @@ public class Jeu {
 	protected Personnage personnage;
 	protected Donjon donjon;
 	protected Scanner scanner = new Scanner(System.in);
+	protected int tailleDonjon;
 
-	public Jeu() {
-		init();
+	public Jeu(int tailleDonjon) {
+		this.tailleDonjon = tailleDonjon;
+		init(tailleDonjon);
 		partie();
 	}
 
-	public void init() {
+	public void init(int tailleDonjon) {
 		System.out.println(intro());
 		initPersonnage();
 		magasinEquipement();
-		donjon = new Donjon(4);
+		donjon = new Donjon(tailleDonjon);
 	}
 
 	public String intro() {
@@ -44,10 +46,10 @@ public class Jeu {
 		while (true) {
 			System.out.println("Entre le nom de ton Nain : ");
 			String nom = scanner.nextLine();
-			System.out.println("Le Guerrier est le plus résistant des Nains." + "\n"
-					+ "Le Guérisseur récupère des points de vie en buvant une choppe d'hydromel." + "\n"
+			System.out.println("Le Guerrier est le plus résistant des Nains, il peut augmenter ses points de vie maximum." + "\n"
+					+ "Le Guérisseur récupère ses points de vie en buvant une choppe d'hydromel." + "\n"
 					+ "Le Maître des runes utilise l'art ancien des runes magiques pour améliorer son armement." + "\n"
-					+ "Le Mineur peut se frayer un chemin en creusant un tunnel." + "\n" + "\n"
+					+ "Le Mineur peut piocher le sol à la découverte de filons d'or." + "\n" + "\n"
 					+ "Choisis ta classe (tape 1, 2, 3 ou 4). \n"
 					+ ">");
 			int numClasse = scanner.nextInt();
@@ -96,7 +98,7 @@ public class Jeu {
 			if(choixInfos == 0) {
 				System.out.println("Chaque armement (armes ou armure) est disponible entre 6 matériaux qui déterminent la qualité du produit. \n"
 						+ "Une arme ou armure en bois vaut 5 pièces d'or, en fer 10 pièces, en acier 20 pièces, en acier-argent 30 pièces, en Galvorn 60 pièces et en Mithril 90 pièces d'or. \n"
-						+ "Un couteau permet lors d'une action de faire 3 attaques faibles avec la possibilité à chaque fois de faire une attaque critique ou non critique, ou de manquer l'attaque. \n"
+						+ "Un couteau permet lors d'une action de faire 4 attaques faibles avec la possibilité à chaque fois de faire une attaque critique ou non critique, ou de manquer l'attaque. \n"
 						+ "La hache permet de faire 2 attaques en 1 action avec les mêmes conditions que le couteau. \n"
 						+ "Le marteau permet de faire une attaque puissante en 1 action, elle peut être soit normale, soit critique, soit manquée. \n"
 						+ "Le champignon, une fois ingéré te permet de récupérer 20 points de vie, il coûte 12 pièces d'or. \n");
@@ -105,9 +107,9 @@ public class Jeu {
 					+ "- couteau (1) \n"
 					+ "- hache (2) \n" 
 					+ "- marteau (3) \n" 
-					+ "- armure, disponible seulement pour les guerriers (4) \n"
+					+ "- armure (4) \n"
 					+ "- champignon (5) \n \n" 
-					+ "Entre le numéro de ton choix en ce qui concerne l'equipement, tu peux aussi faire (6) pour sortir de la Taverne, ou (7) pour faire de la place. \n"
+					+ "Entre le numéro de ton choix en ce qui concerne l'equipement, tu peux aussi faire (6) pour sortir de la Taverne, ou (7) pour accéder à ton inventaire. \n"
 					+ ">");
 			int choixEquipement = scanner.nextInt();
 			if(choixEquipement == 6) {
@@ -129,7 +131,15 @@ public class Jeu {
 					break;
 				}
 			}
-			System.out.println("Quel matiériau désires-tu pour ton armement : \n"
+			else if(choixEquipement == 7) {
+				personnage.accesInventaire();
+				annonceEquipement();				
+			}
+			else if(choixEquipement > 7 || choixEquipement < 1) {
+				annonceEquipement();
+			}
+			else {
+					System.out.println("Quel matiériau désires-tu pour ton armement : \n"
 					+"du bois (5) pour 5 pièces d'or ? \n"
 					+"du fer (10) pour 10 pièces d'or ? \n"
 					+"de l'acier (20) pour 20 pièces d'or ? \n"
@@ -189,7 +199,7 @@ public class Jeu {
 				System.out.println("Tu as essayé de me voler ! Fous-le camp de ma Tarverne Nain Bécil !");
 				break;
 			}			
-
+		}
 		}		
 	}
 	
@@ -203,11 +213,15 @@ public class Jeu {
 					+ ">");
 			int rep = scanner.nextInt();
 			if(rep == 1) {
-				donjon.deplacement();
+				donjon.deplacement(this);
 				partie();
 			}
 			else if(rep == 2) {
 				personnage.accesInventaire();
+				partie();
+			}
+			else if(rep == 3) {
+				personnage.aptitudeDeClasse();
 				partie();
 			}
 			else {
@@ -215,5 +229,34 @@ public class Jeu {
 				partie();
 			}
 		}
+	}
+	public void gameOver() {
+		System.out.println("  ____    _    __  __ _____    _____     _______ ____  \n"
+				+ " / ___|  / \\  |  \\/  | ____|  / _ \\ \\   / / ____|  _ \\ \n"
+				+ "| |  _  / _ \\ | |\\/| |  _|   | | | \\ \\ / /|  _| | |_) |\n"
+				+ "| |_| |/ ___ \\| |  | | |___  | |_| |\\ V / | |___|  _ < \n"
+				+ " \\____/_/   \\_\\_|  |_|_____|  \\___/  \\_/  |_____|_| \\_\\");
+		System.out.println("Veux-tu tenter ta chance avec une autre partie (0/1) ? \n"
+				+ ">");
+		int rep = scanner.nextInt();
+		if(rep == 0) {
+			Jeu j = new Jeu(tailleDonjon);
+
+		}
+		else {
+			System.out.println("Aurevoir.");
+			System.exit(0);
+		}
+	}
+	public void theEnd() {
+		System.out.println(" _____ _   _ _____   _____ _   _ ____  \n"
+				+ "|_   _| | | | ____| | ____| \\ | |  _ \\ \n"
+				+ "  | | | |_| |  _|   |  _| |  \\| | | | |\n"
+				+ "  | | |  _  | |___  | |___| |\\  | |_| |\n"
+				+ "  |_| |_| |_|_____| |_____|_| \\_|____/ ");
+		System.out.println("\n"
+				+ "> Merci d'avoir joué à Dwarf RPG \n"
+				+ "> Projet réalisé par Vincent RODRIGUEZ.");
+		System.exit(0);
 	}
 }

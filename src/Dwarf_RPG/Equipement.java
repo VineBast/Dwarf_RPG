@@ -1,14 +1,16 @@
 package Dwarf_RPG;
 
-public class Equipement {
+public abstract class Equipement {
 	protected double prix;
+	protected double degats;
 	
 	public Equipement(double prix) {
 		this.prix = prix;
 	}
+	abstract String type();
 	
 	public String typeEquipement() {
-		String type = this.getClass().toString().substring(16);
+		String type = this.type();
 		switch((int)this.prix) {
 		case(5):
 			return(type+" en bois");
@@ -32,8 +34,5 @@ public class Equipement {
 		return false;
 	}
 	
-	/*public Armement(double prix, double protection) {
-		this.prix = prix;
-		this.prix = protection;
-	}*/
+	abstract public void attaque(Monstre m);
 }

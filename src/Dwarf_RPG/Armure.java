@@ -6,7 +6,14 @@ public class Armure extends Equipement {
 		super(prix);
 	}
 	
-	public String typeEquipement() {
-		return("Armure");
+	@Override
+	public void attaque(Monstre m) {
+		// TODO Auto-generated method stub		
+	}
+
+	@Override
+	String type() {
+		// TODO Auto-generated method stub
+		return "Armure";
 	}
 }

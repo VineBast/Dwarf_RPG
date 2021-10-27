@@ -14,8 +14,18 @@ public class Champignon extends Equipement {
 		else {
 			p.pv = p.pv + 20;
 		}
-		System.out.println("Champignon mangé, points de vie revigorés !"
+		System.out.println("Champignon mangé, points de vie revigorés ! \n"
 				+"Points de vie : "+ p.pv );
 		return true;
+	}
+
+	@Override
+	public void attaque(Monstre m) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	String type() {
+		return "Champignon";
 	}
 }
