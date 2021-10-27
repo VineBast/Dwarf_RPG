@@ -15,10 +15,10 @@
 * Il y a des pouvoirs propre à chaque classe, un système d'expérience et de niveaux, des Coffres et des Taverniers dans le Donjon.
 
 **Choix personnels d'optimisation :**
-* Dans un premier temps, il était possible de fuir après chaque attaque, et donc revenir dans le terminal à chauqe fois. Ce qui ajoutait beaucoup de lourdeur, j'ai donc fait le choix de jouer les combats tour par tour automatiquement avec une boucle. Il est toujours possible de fuir, ou de revenir en arrière mais **avant** d'engager l'action ou le combat. Dans le cas du combat, il est annoncé le type de monstre auquel on fait face pour se rendre de compte de si l'on doit fuir ou non en fonction de notre niveau.
-* Les déplacements dans le Donjon se font avec des suppressions et des ajouts d'Objets Destructibles dans un Tableau à deux dimensions. Ainsi, j'ai créé un Objet Destructible Curseur qui a comme unique but de prendre la place d'un autre Destructible (Monstre, Tavernier ou Coffre) pour savoir où est le Personnage.
+* Dans un premier temps, il était possible de fuir après chaque attaque, et donc revenir dans le terminal à chauqe fois. Cela ajoutait beaucoup de lourdeur, j'ai donc fait le choix de jouer les combats automatique avec une boucle pour gagner en fluidité (parfois on fait face à 50 tours). Il est toujours possible de fuir, ou de revenir en arrière mais **avant** d'engager l'action ou le combat. Dans le cas du combat, il est annoncé le type de monstre auquel on fait face avant de prendre une décision.
+* Les déplacements dans le Donjon se font avec des suppressions et des ajouts d'Objets Destructibles dans un Tableau à deux dimensions. Ainsi, j'ai créé un Objet Destructible Curseur qui a comme unique but de prendre la place d'un autre Destructible (Monstre, Tavernier ou Coffre) pour savoir où on se trouve.
 
 **Améliorations possibles (et envisagées) :**
 * La classe Monstre est très simpliste, j'aurais pu créer de nouvelles classes héritées pour chaque Monstre et leur donner des fonctions particulières.
 * Améliorer le système de leveling, qui est basique.
-* Il y a aussi certaines exceptions avec des réponses erronnées (comme des String entrés à la place de int) que je n'ai pas géré.
+* Il y a aussi certaines exceptions avec des réponses erronées (comme des String entrés à la place de int) qui n'ont pas été géré.
