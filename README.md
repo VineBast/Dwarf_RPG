@@ -21,4 +21,5 @@
 **Améliorations possibles (et envisagées) :**
 * La classe Monstre est très simpliste, j'aurais pu créer de nouvelles classes héritées pour chaque Monstre et leur donner des fonctions particulières.
 * Améliorer le système de leveling, qui est basique.
+* Mieux équilibrer le jeu en général au niveau du nombre de monstres (et leur niveau), de coffres et de taverniers. Tout est mis en place en random.
 * Il y a aussi certaines exceptions avec des réponses erronées (comme des String entrés à la place de int) qui n'ont pas été géré.
