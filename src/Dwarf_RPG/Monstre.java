@@ -28,7 +28,7 @@ public class Monstre extends Destructible {
 		else if(this.pvMax <= 250) {
 			return "Warg égaré";
 		}
-		else if(this.pvMax <= 500) {
+		else if(this.pvMax <= 600) {
 			return "Troll de Mine";
 		}
 		else if(this.pvMax == 1000) {
