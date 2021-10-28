@@ -10,7 +10,7 @@
 * Pour faire varier la taille du Donjon, allez dans `Jeu.java`, et inscriver la taille souhaitée dans `new Jeu(4)`. Le chiffre correspond à la largeur du donjon.
 
 **Fonctionnement IG :**
-* La majorité des choix ont pour réponse Oui ou Non, avec 0 pour Oui et 1 pour Non.
+* La majorité des choix ont pour réponse Oui ou Non, avec 0 pour Oui, et 1 pour Non.
 * Pour avancer dans le Donjon il vous sera demander d'entrer Z, Q, S ou D comme un jeu classique.
 * Parfois, mais rarement, il faudra entrer des lettres en majuscules (tout est expliqué).
 * Il y a des pouvoirs propre à chaque classe, un système d'expérience et de niveaux, des Coffres et des Taverniers dans le Donjon.
