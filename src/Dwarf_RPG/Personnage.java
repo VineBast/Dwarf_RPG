@@ -130,9 +130,6 @@ public abstract class Personnage {
 			inventaire[rep3] = null;
 			System.out.println("L'objet a été supprimé de ton inventaire.");
 		}
-		else {
-			return;
-		}
 	}
 	public void gainExp(double xp) {
 		this.exp = this.exp + xp;

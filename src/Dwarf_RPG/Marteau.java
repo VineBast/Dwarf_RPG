@@ -17,19 +17,18 @@ public class Marteau extends Arme {
 			degatsTemp = degats * RATIO_CRITIQUE_MARTEAU;
 			m.pv = m.pv - (degatsTemp);
 			System.out.println("Attaque au couteau marteau critique ! Le "+m.typeDeMonstre()+" a pris "+degatsTemp+" dégâts critiques.");
-			System.out.println("Il reste "+m.pv+" points de vie au "+m.typeDeMonstre()+". \n");
+			System.out.println(m.pv());
 			break;
 		case(1):
 			degatsTemp = degats;
 			m.pv = m.pv - degatsTemp;
 			System.out.println("Attaque au marteau réussie, le "+m.typeDeMonstre()+" a pris "+degatsTemp+" dégâts.");
-			System.out.println("Il reste "+m.pv+" points de vie au "+m.typeDeMonstre()+". \n");
+			System.out.println(m.pv());
 			break;
 		case(2):
 			System.out.println("Ton marteau manque totalement sa cible ! Attaque ratée. \n");
 			break;
-		}	
-		
+		}			
 	}
 
 	@Override

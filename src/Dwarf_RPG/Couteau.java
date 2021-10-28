@@ -19,14 +19,14 @@ public class Couteau extends Arme {
 			case(0):
 				degatsTemp = (double)Math.round((degats / 4 * RATIO_CRITIQUE_COUTEAU) * 10) / 10;
 				m.pv = m.pv - (degatsTemp);
-				System.out.println("Attaque au couteau n°"+tour+" ,le "+m.typeDeMonstre()+" a pris "+degatsTemp+" dégâts critiques.");
-				System.out.println("Il reste "+m.pv+" points de vie au "+m.typeDeMonstre()+". \n");
+				System.out.println("Attaque au couteau n°"+tour+", le "+m.typeDeMonstre()+" a pris "+degatsTemp+" dégâts critiques.");
+				System.out.println(m.pv());
 				break;
 			case(1):
 				degatsTemp = (double)Math.round((degats / 4) * 10) / 10;
 				m.pv = m.pv - (degatsTemp);
-				System.out.println("Attaque au couteau n°"+tour+" ,le "+m.typeDeMonstre()+" a pris "+degatsTemp+" dégâts.");
-				System.out.println("Il reste "+m.pv+" points de vie au "+m.typeDeMonstre()+". \n");
+				System.out.println("Attaque au couteau n°"+tour+", le "+m.typeDeMonstre()+" a pris "+degatsTemp+" dégâts.");
+				System.out.println(m.pv());
 				break;
 			case(2):
 				System.out.println("Ton couteau manque totalement sa cible ! Ton attaque au couteau n°"+tour+" est ratée. \n");

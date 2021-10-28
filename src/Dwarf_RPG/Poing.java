@@ -28,13 +28,13 @@ public class Poing extends Arme {
 				degatsTemp = (double)Math.round((degatsPoing) * 10) / 10;
 				m.pv = m.pv - degatsTemp;
 				System.out.println("Coup de poing n°"+tour+", le "+m.typeDeMonstre()+" a pris "+degatsTemp+" dégâts critiques.");
-				System.out.println("Il reste "+m.pv+" points de vie au "+m.typeDeMonstre()+". \n");
+				System.out.println(m.pv());
 				break;
 			case(1):
 				degatsTemp = (double)Math.round(degats * 10) / 10;
 				m.pv = m.pv - (degatsTemp);
 				System.out.println("Coup de poing n°"+tour+", le "+m.typeDeMonstre()+" a pris "+degatsTemp+" dégâts.");
-				System.out.println("Il reste "+m.pv+" points de vie au "+m.typeDeMonstre()+". \n");
+				System.out.println(m.pv());
 				break;
 			case(2):
 				System.out.println("Ton poing manque totalement sa cible ! Ton attaque n°"+tour+" est ratée. \n");

@@ -39,10 +39,10 @@ public class Monstre extends Destructible {
 	
 	public String pv() {
 		if(this.pv <= 0) {
-			return("Il reste 0 point de vie au Monstre. \n");
+			return("Il reste 0 point de vie au "+this.typeDeMonstre()+". \n");
 		}
 		else {
-			return("Il reste "+this.pv+" points de vie au Monstre. \n");
+			return("Il reste "+this.pv+" points de vie au "+this.typeDeMonstre()+". \n");
 		}
 	}
 	

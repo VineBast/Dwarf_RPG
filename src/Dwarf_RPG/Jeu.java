@@ -15,10 +15,10 @@ public class Jeu {
 	}
 
 	public void init(int tailleDonjon) {
+		donjon = new Donjon(tailleDonjon);
 		System.out.println(intro());
 		initPersonnage();
 		magasinEquipement();
-		donjon = new Donjon(tailleDonjon);
 	}
 
 	public String intro() {
@@ -113,7 +113,7 @@ public class Jeu {
 					+ ">");
 			int choixEquipement = scanner.nextInt();
 			if(choixEquipement == 6) {
-				break;
+				partie();
 			}
 			else if(choixEquipement == 5) {
 				if(personnage.ajoutInventaire(new Champignon()) == false) {
