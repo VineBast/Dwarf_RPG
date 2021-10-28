@@ -11,15 +11,17 @@ public class Monstre extends Destructible {
 		this.pvMax = pv;
 		this.degats = (double)Math.round((pv / 10) * 10) / 10;
 	}
-	
-	public String dessin() {
+	//Pour l'affichage dans le tableau à deux dimensions
+	protected String dessin() {
 		return "?";
 	}
-	
-	public String type() {
+	//Fonction qui simplifie le bestiaire du jeu (comme expliqué dans le README). 
+	//Les monstres n'étaient pas assez évolués pour que j'en fasse des classes particulières, j'ai préféré tout faire fonctionner avec cette fonction
+	//En fonction de ses pvMax le Monstre a un certain nom, les pvMax determinent aussi les dégâts
+	protected String type() {
 		return "Monstre";
 	}
-	public String typeDeMonstre() {
+	protected String typeDeMonstre() {
 		if(this.pvMax <= 100) {
 			return "Gobelin";
 		}
@@ -36,8 +38,8 @@ public class Monstre extends Destructible {
 			return "Monstre";
 		}
 	}
-	
-	public String pv() {
+	//Fonction qui évite d'avoir des montants de PV négatifs
+	protected String pv() {
 		if(this.pv <= 0) {
 			return("Il reste 0 point de vie au "+this.typeDeMonstre()+". \n");
 		}
@@ -47,7 +49,7 @@ public class Monstre extends Destructible {
 	}
 	
 	//Gère l'attaque du Monstre vers le personnage, soit il réussit l'attaque, soit il la rate
-	public void attaque(Personnage p) {
+	protected void attaque(Personnage p) {
 		random = ((int) (Math.random()* 2));
 		switch(random) {
 		case(0):
@@ -90,6 +92,7 @@ public class Monstre extends Destructible {
 
 	@Override
 	double contenu() {
+		// TODO Auto-generated method stub
 		return 0;
 	}
 }

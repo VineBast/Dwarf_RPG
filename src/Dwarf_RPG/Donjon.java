@@ -7,21 +7,21 @@ public class Donjon {
 	protected int largeur;
 	protected int hauteur;
 	protected Scanner scanner = new Scanner(System.in);
-	protected int CurseurI = 0;
+	protected int CurseurI = 0; //positions du Personnage dans le Tableau à deux dimensions
 	protected int CurseurY = 0;
 	
-	public Donjon(int largeur) {
+	protected Donjon(int largeur) {
 		this.largeur = largeur;
 		this.hauteur = largeur;
 		this.donjon = new Destructible[this.largeur][this.hauteur];
 		initDonjon(largeur);
 	}
 	
-	public void initDonjon(int largeur) {
+	protected void initDonjon(int largeur) {
 		constructDonjon();		
 	}	
-
-	public void constructDonjon() {
+	//Créé le Tableau à deux dimensions d'Objets Destructibles : Monstre, Coffre, Tavernier et Curseur.
+	protected void constructDonjon() {
 		int i = 0;
 		int j;	
 		int random;
@@ -29,27 +29,30 @@ public class Donjon {
 		while (i < hauteur) {
 			j = 0;
 			while (j < largeur) {
-				random = ((int) (Math.random()* 3));
+				random = ((int) (Math.random()* 4));
 				switch(random) {
 				case(0):
-					donjon[i][j] = new Monstre((int) (Math.random()* 500));
+					donjon[i][j] = new Monstre((int) (Math.random()* 300));
 					break;
 				case(1):
-					donjon[i][j] = new Tavernier();
+					donjon[i][j] = new Monstre((int) (Math.random()* 300)+300);
 					break;
 				case(2):
-					donjon[i][j] = new Coffre((int) (Math.random()* 50));
+					donjon[i][j] = new Coffre((int) (Math.random()* 40));
+					break;
+				case(3):
+					donjon[i][j] = new Tavernier();
 					break;
 				}
 				j=j+1;				
 			}
 			i=i+1;
 		}
-		donjon[0][0] = new Curseur();
+		donjon[0][0] = new Curseur(); //Objet qui pointe l'endroit où se trouve le Personnage
 		donjon[hauteur-1][largeur-1] = new Monstre(1000);
 	}
-	
-	public void affiche() {
+	//Affiche le Donjon en fonction des Destructibles et du retour de leur fonction dessin()
+	protected void affiche() {
 		int i = hauteur - 1;
 		int j;
 		String print;
@@ -72,11 +75,12 @@ public class Donjon {
 		}	
 		System.out.println("\n");
 	}
-	
-	public void deplacement(Jeu jeu) {
+	//Fonction de déplacement demande où on veut se déplacer dans le tableau à deux dimensions.
+	//Regarde si cela pointe un Objet null, une sortie de tableau, un Objet Destructible
+	protected void deplacement(Jeu jeu) {
 		System.out.println("Se déplacer en haut (Z), à gauche (Q), en bas (S) ou à droite (D) ? \n"
 				+ ">");
-		String rep = scanner.nextLine();
+		String rep = (scanner.nextLine()).toUpperCase();
 		switch(rep) {
 		case("Z"):
 			if (CurseurI == hauteur -1) {
@@ -131,19 +135,19 @@ public class Donjon {
 			deplacement(jeu);
 		}
 	}
-	
-	public void erreurDeplacement(Jeu jeu) {
+	//Relance la fonction déplacement si erreur
+	protected void erreurDeplacement(Jeu jeu) {
 		System.out.println("Il y a un mur là où tu vas !");
 		deplacement(jeu);
 	}
-	
-	public void queFaire(String type, Jeu jeu, int positionI, int positionY) {
+	//Fonction avec système de choix en IF et SWITCH
+	protected void queFaire(String type, Jeu jeu, int positionI, int positionY) {
 		String rep = "";
 		if (type == "Monstre") {
 			Monstre m = (Monstre)donjon[positionI][positionY];
 			System.out.println("Veux-tu Combattre le "+m.typeDeMonstre()+" ou Fuir ? (C/F) \n"
 					+ ">");
-			rep = scanner.nextLine();
+			rep = (scanner.nextLine()).toUpperCase();
 			switch(rep) {
 			case("C"):
 				combat(positionI, positionY, jeu, (Monstre)donjon[positionI][positionY]);
@@ -155,12 +159,16 @@ public class Donjon {
 			}
 		}
 		else if(type == "Tavernier") {
-			System.out.println("Veux-tu faire des Emplettes ou revenir sur tes Pas ? (E/P) \n"
+			System.out.println("Veux-tu faire des Emplettes ou revenir sur tes Pas ou passer ton Chemin ? (E/P/C) \n"
 					+ ">");
-			rep = scanner.nextLine();
+			rep = (scanner.nextLine()).toUpperCase();
 			switch(rep) {
 			case("E"):
 				jeu.magasinEquipement();
+				avanceCase(positionI, positionY);
+				System.out.println("Dans ton dos tu entends des volets se fermer avec fracas, le Tavernier ferme boutique.");
+				break;
+			case("C"):
 				avanceCase(positionI, positionY);
 				System.out.println("Dans ton dos tu entends des volets se fermer avec fracas, le Tavernier ferme boutique.");
 				break;
@@ -172,7 +180,7 @@ public class Donjon {
 		else if(type == "Coffre") {
 			System.out.println("Veux-tu Ouvrir le coffre ou revenir sur tes Pas ? (O/P) \n"
 					+ ">");
-			rep = scanner.nextLine();
+			rep = (scanner.nextLine()).toUpperCase();
 			switch(rep) {
 			case("O"):
 				coffre(positionI, positionY, jeu);
@@ -184,15 +192,15 @@ public class Donjon {
 			}
 		}
 	}
-	
-	public void avanceCase(int I, int Y) {
+	//Fonction d'avancée de case dans le tableau à deux dimensions
+	protected void avanceCase(int I, int Y) {
 		donjon[CurseurI][CurseurY] = null;
 		CurseurI = I;
 		CurseurY = Y;
 		donjon[CurseurI][CurseurY] = new Curseur();
 	}
-	
-	public void combat(int I, int Y, Jeu j, Monstre m) {
+	//Système de combat sur une boucle dont les tours varient en fonction de l'arme et armure du personnage et du monstre
+	protected void combat(int I, int Y, Jeu j, Monstre m) {
 		int i = 1;
 		while(true) {
 			System.out.println("##########\n"
@@ -226,8 +234,8 @@ public class Donjon {
 			i++;
 		}
 	}
-	
-	public void coffre(int I, int Y, Jeu j) {
+	//Fonction d'ouverture de coffre, qui ajoute de l'or
+	protected void coffre(int I, int Y, Jeu j) {
 		System.out.println("Tu fais sauter le cadenas du coffre d'un coup bien senti. \n");
 		System.out.println("A l'intérieur se trouvent : "+donjon[I][Y].contenu()+" pièces d'or. \n");
 		j.personnage.or += donjon[I][Y].contenu();

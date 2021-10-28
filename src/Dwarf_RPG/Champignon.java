@@ -6,8 +6,8 @@ public class Champignon extends Equipement {
 	Champignon() {
 		super(prix);
 	}
-		
-	public boolean utilise(Personnage p) {
+	//Rend des pv au Personnage	
+	protected boolean utilise(Personnage p) {
 		if(p.pvMax - p.pv < 20) {
 			p.pv = p.pvMax;
 		}
@@ -20,7 +20,7 @@ public class Champignon extends Equipement {
 	}
 
 	@Override
-	public void attaque(Monstre m) {
+	protected void attaque(Monstre m) {
 		// TODO Auto-generated method stub
 	}
 

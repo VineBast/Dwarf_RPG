@@ -4,6 +4,7 @@ public class Guerrier extends Personnage {
 	public Guerrier(String nom, String classe, int numClasse) {
 		super(nom, classe, numClasse);
 	}
+	//Augmente le montant des points de vie maximum et enlève 10 pts de mana
 	public void aptitudeDeClasse() {
 		if(super.mana >= 10) {
 			super.pvMax += 10;

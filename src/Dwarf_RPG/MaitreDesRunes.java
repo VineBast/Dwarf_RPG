@@ -1,15 +1,15 @@
 package Dwarf_RPG;
 
 public class MaitreDesRunes extends Personnage {
-	public MaitreDesRunes(String nom, String classe, int numClasse) {
+	protected MaitreDesRunes(String nom, String classe, int numClasse) {
 		super(nom, classe, numClasse);
 	}
-	
-	public void aptitudeDeClasse() {
+	//Ajoute des dégâts à l'arme et enlève du mana
+	protected void aptitudeDeClasse() {
 		if(super.mana >= 10) {
-			super.inventaire[this.numArmeEquipee].degats += 5;
+			super.inventaire[this.numArmeEquipee].degats += 10;
 			System.out.println("Ton grimoire de runnage et ton marteau de Maître des runes en main, tu ajoutes une runes ancienne à ton arme");
-			System.out.println("Ton arme équipée gagne 5 de dégats \n"
+			System.out.println("Ton arme équipée gagne 10 de dégats. Elle fait mainteant "+super.inventaire[this.numArmeEquipee].degats+" de dégâts \n"
 					+ "Tu perds 10 points de mana.");
 			super.mana -= 10;
 		}

@@ -8,7 +8,7 @@ public class Marteau extends Arme {
 	Marteau(double prix) {
 		super(prix);
 	}
-	
+	//Système de combat avec un random, soit c'est un critique, soit c'est une attaque normale, soit c'est ratée
 	@Override
 	public void attaque(Monstre m) {
 		random = ((int) (Math.random()* 3));

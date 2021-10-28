@@ -9,7 +9,7 @@ public class Hache extends Arme {
 	Hache(double prix) {
 		super(prix);
 	}
-	
+	//Système de combat avec un random, soit c'est un critique, soit c'est une attaque normale, soit c'est ratée
 	public void attaque(Monstre m) {
 		int i = 0;
 		int tour;

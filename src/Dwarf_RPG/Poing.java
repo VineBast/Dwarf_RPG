@@ -5,7 +5,7 @@ public class Poing extends Arme {
 	protected int random;
 	protected double degatsTemp;
 	protected double degatsPoing;
-
+	//Classe par défaut si l'on n'a pas d'arme équipée
 	Poing(double prix) {
 		super(prix);
 	}
@@ -14,7 +14,7 @@ public class Poing extends Arme {
 	String type() {
 		return "Poing";
 	}
-
+	//Même système de combat que les autres
 	@Override
 	public void attaque(Monstre m) {
 		int i = 0;
