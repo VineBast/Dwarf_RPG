@@ -17,7 +17,7 @@
 
 **Choix personnels d'optimisation :**
 * Dans un premier temps, il était possible de fuir après chaque attaque, et donc de revenir dans le terminal entre chaque action. Cela ajoutant beaucoup de lourdeur, j'ai fait le choix de jouer les combats automatique avec une boucle pour gagner en fluidité (parfois on fait face à 50 tours). Il est toujours possible de fuir, ou de revenir en arrière mais **avant** d'engager l'action ou le combat. Dans le cas du combat, il est annoncé le type de monstre auquel on fait face avant de prendre une décision.
-* Les Tarveniers permettent 3 actions, on peut soit revenir sur ses **pas** (ne pas avancer de case), soit passer son **chemin** ce qui fera disparaitre le Tarvenier (et avancer d'une case), soit faire des **emplettes** pour faire un achât (dans ce cas le Tavernier sera à nouveau accessible).
+* Les Tarveniers permettent 3 actions, on peut soit revenir sur ses **pas** (ne pas avancer de case), soit passer son **chemin** ce qui fera disparaitre le Tarvenier (et avancer d'une case), soit faire des **emplettes** pour faire un achât.
 * Les déplacements dans le Donjon se font avec des suppressions et des ajouts d'Objets Destructibles dans un Tableau à deux dimensions. Ainsi, j'ai créé un Objet Destructible Curseur qui a comme unique but de prendre la place d'un autre Destructible (Monstre, Tavernier ou Coffre) pour savoir où on se trouve.
 * La Taverne, ou le Magasin d'Equipement n'est pas une classe à part, elle fait partie de la classe Jeu, la classe principale. Je trouvais cette façon de faire plus simple au niveau du codage.
 
