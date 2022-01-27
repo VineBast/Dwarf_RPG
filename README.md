@@ -4,7 +4,7 @@
 
 **Introduction à Dwarf_RPG :**
 * C'est un RPG en terminal classique dans un univers **Tolkenien**. Vous y incarnerez un Nain qui fait son entrée dans le Donjon d'**Hildur**.
-* Vous avez le choix entre 4 classes : Guerrier, Guérisseur, Maître des Runes, Mineur ou une classe cachée.
+* Vous avez le choix entre 5 classes : Guerrier, Guérisseur, Maître des Runes, Mineur ou une classe cachée.
 * Le bestiaire se compose de : Gobelins (faible créature), Wargs (moyenne créature), de Trolls (forte créature) et d'un Boss, le **Dragon d'Hildur** qui est très puissant.
 * Vous commencez en bas à gauche sur une carte carrée. Le but du jeu est de vaincre le boss en haut à droite et de sortir du Donjon.
 * Pour faire varier la taille du Donjon, allez dans `Jeu.java`, et inscriver la taille souhaitée dans `new Jeu(4)`. Le chiffre correspond à la largeur du donjon.
